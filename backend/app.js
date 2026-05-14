@@ -12,15 +12,15 @@ const port = 3000;
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../frontend/dist")));
-// app.use(express.static("../frontend/dist"));
+
 
 app.use(cookieParser());
 app.use(express.json());
 
-// ВСЕ API
+
 app.use("/api", routes);
 
-// fallback для SPA
+
 app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
 });
